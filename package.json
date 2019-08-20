@@ -5,7 +5,7 @@
   "author": "Chen Zhenyuan <jason@chenzhenyuan.com>",
   "license": "MIT",
   "private": false,
-  "main": "build/main.js",
+  "main": "build/cat.js",
   "scripts": {
     "dev": "npx babel src -d build && node .",
     "build": "npx babel src -d build --source-maps > /dev/null && echo \"Successfully compiled!\""
