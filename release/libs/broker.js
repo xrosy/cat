@@ -1,0 +1,7 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.tinter=exports.builtIn=exports.emoji=void 0;var util=_interopRequireWildcard(require("util")),colors=_interopRequireWildcard(require("ansi-colors")),variables=_interopRequireWildcard(require("./variables")),_emoji=_interopRequireDefault(require("./emoji"));function _interopRequireDefault(a){return a&&a.__esModule?a:{default:a}}function _interopRequireWildcard(a){if(a&&a.__esModule)return a;var b={};if(null!=a)for(var c in a)if(Object.prototype.hasOwnProperty.call(a,c)){var d=Object.defineProperty&&Object.getOwnPropertyDescriptor?Object.getOwnPropertyDescriptor(a,c):{};d.get||d.set?Object.defineProperty(b,c,d):b[c]=a[c]}return b["default"]=a,b}// console.log(colors.styles);
+/*
+export const namespace = ({ output, method, options }) => {
+
+}
+*/var emoji=function emoji(a){var b=a.output,c=/\:i\-([a-z]+)/g;return b.replace(c,function(a,b){return _emoji["default"][b]||a})};exports.emoji=emoji;var builtIn=function builtIn(a){var b=a.output,c=a.method,d=b;return Object.keys(variables).forEach(function(a){var b=variables[a];b="function"==typeof b?b():b,d=d.replace(new RegExp(":".concat(a),"g"),b)}),d.replace(":method",c)};/* 输出着色 */exports.builtIn=builtIn;var tinter=function tinter(a){var b=a.output,c=a.method,d=a.options;return b};exports.tinter=tinter;
+//# sourceMappingURL=broker.js.map

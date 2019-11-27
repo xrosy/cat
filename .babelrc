@@ -1,6 +1,6 @@
 {
   "presets": [
-    ["minify", { "evaluate": false, "mangle": true, "keepFnName": true }],
+    ["minify", { "evaluate": true, "mangle": true, "keepFnName": true }],
 
     ["@babel/preset-env"]
   ],

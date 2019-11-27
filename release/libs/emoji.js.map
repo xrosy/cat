@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../src/libs/emoji.js"],"names":[],"mappings":"2GAAe,CACb,MAAS,QADI,CAEb,MAAS,QAFI,CAGb,KAAS,QAHI,CAIb,KAAS,QAJI,CAKb,KAAS,QALI,C","sourcesContent":["export default {\n  \"check\": \"\\u2714\",\n  \"cross\": \"\\u2718\",\n  \"info\" : \"\\u2139\",\n  \"excl\" : \"\\u203c\",\n  \"rdsh\" : \"\\u21b3\",\n}"],"file":"emoji.js"}

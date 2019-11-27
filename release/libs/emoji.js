@@ -1,0 +1,2 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports["default"]=void 0;var _default={check:"\u2714",cross:"\u2718",info:"\u2139",excl:"\u203C",rdsh:"\u21B3"};exports["default"]=_default;
+//# sourceMappingURL=emoji.js.map

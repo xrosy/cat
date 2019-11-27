@@ -1,15 +1,17 @@
 {
   "name": "@xrosy/cat",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "logger tools",
   "author": "Chen Zhenyuan <jason@chenzhenyuan.com>",
   "license": "MIT",
   "private": false,
   "main": "build/cat.js",
   "scripts": {
-    "dev": "npx babel src -d build && node .",
-    "build": "npx babel src -d build --source-maps > /dev/null && echo \"Successfully compiled!\""
+    "build": "npx babel src -d release --source-maps > /dev/null && echo \"Successfully compiled!\"",
+    "dev:es": "clear && npx babel src -d built && node test/main.js",
+    "test": "clear && npx babel src -d built && node test/main.js"
   },
+  "repository": "",
   "dependencies": {
     "ansi-colors": "^4.1.1"
   },
@@ -19,6 +21,7 @@
     "@babel/plugin-proposal-class-properties": "^7.5.5",
     "@babel/plugin-proposal-decorators": "^7.4.4",
     "@babel/preset-env": "^7.5.5",
+    "@types/node": "^12.7.2",
     "babel-preset-minify": "^0.5.1"
   }
 }

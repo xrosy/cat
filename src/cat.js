@@ -1,13 +1,12 @@
-import util from 'util';
-import color from 'ansi-colors'
+import * as util from 'util';
+import * as color from 'ansi-colors';
 
+import { stdout, clear } from './stdout';
 
-const stdout = (str) => str;
 
 const __CustomizeColorConf = {
-  log      : stdout,
   info     : color.cyan,
-  warning  : color.yellow,
+  warn     : color.yellow,
   error    : color.red,
   success  : color.green,
   dark     : color.dim.gray,
@@ -22,41 +21,41 @@ const __CustomizeColorConf = {
 };
 
 
-
-color.theme(__CustomizeColorConf);
-
-
-class Cat {
-  set debuggerState(bState) {
-    this[Symbol.for('cat.debuggerState')] = bState === true || false;;
+function Kitty(options = {}) {
+  if (!(this instanceof Kitty)) {
+    throw new TypeError("Cannot call a class as a function");
   }
 
-  get debuggerState() {
-    return this[Symbol.for('cat.debuggerState')];
+  const _privater_ = {};
+
+  let printerMapping = { ...options };
+
+  class Cat {
+    clear = clear
   }
 
-  constructor() {
-    Object.keys(__CustomizeColorConf).forEach((method)=>{
-      Cat.prototype[method] = (...argv) => {
+  Object.keys(printerMapping).forEach((method)=>{
 
-        if (this[Symbol.for('cat.debuggerState')] === false) {
-          return;
-        }
+    if (method in Cat.prototype) return;
 
-        const str = color[method](util.format(...argv)) + '\n';
+    (Cat.prototype)[method] = function proxyAgent(...output) {
+      stdout({ output, method, options });
+    }
+  });
 
-        process.stdout.write(str);
-      }
-    });
-  }
-
-  debugger(bState) {
-    this.debuggerState = bState === true || false;
-  }
-}
+  return new Cat(options);
+};
 
 
-export { Cat };
+/* -------------------------------------------------------------------------- */
+export default new Kitty({
+  debug  : '#cyanBright(:i-debug[:datetime])',
+  log    : ':i-log[:datetime]',
+  info   : '#blueBright(:i-info[:datetime])',
+  success: '#greenBright(:i-success[:datetime])',
+  warn   : '#yellowBright(:i-warn[:datetime])',
+  error  : '#redBright(:i-error[:datetime])'
+});
 
 
-export default new Cat();
+export const Cat = Kitty;
