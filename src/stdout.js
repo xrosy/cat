@@ -9,9 +9,10 @@ const clear = () => {
 };
 
 const format = ({ output, method, options })=> {
-  const formatter = tinter({method, output: options[method]});
+  const _mTinter = tinter({ method, output: options[method] });
+  const _oTinter = tinter({ method, output: util.format(...output) });
 
-  let targetOutput = util.format(formatter, ...output);
+  let targetOutput = util.format(_mTinter, _oTinter);
 
   Object.values(prehandles).forEach((handler) => {
     targetOutput = handler({ output: targetOutput, method, options });

@@ -28,13 +28,11 @@ function Kitty(options = {}) {
 
   const _privater_ = {};
 
-  let printerMapping = { ...options };
-
   class Cat {
     clear = clear
   }
 
-  Object.keys(printerMapping).forEach((method)=>{
+  Object.keys({ ...options }).forEach((method) => {
 
     if (method in Cat.prototype) return;
 
@@ -54,7 +52,8 @@ export default new Kitty({
   info   : '#blueBright(:i-info[:datetime])',
   success: '#greenBright(:i-success[:datetime])',
   warn   : '#yellowBright(:i-warn[:datetime])',
-  error  : '#redBright(:i-error[:datetime])'
+  error  : '#redBright(:i-error[:datetime])',
+  primary  : '#grey(:i-primary[:datetime])',
 });
 
 
